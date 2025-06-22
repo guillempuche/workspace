@@ -1,0 +1,18 @@
+{
+	"editor.codeActionsOnSave": {
+		"source.organizeImports.biome": "explicit",
+		"source.fixAll.biome": "explicit"
+	},
+	"editor.defaultFormatter": "biomejs.biome",
+	"explorer.fileNesting.patterns": {
+		"package.json": "package-lock.json, yarn.lock"
+	},
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/.tamagui": true,
+		"**/.yarn": true,
+		"**/dist": true,
+		"**/yarn.lock": true
+	},
+	"typescript.enablePromptUseWorkspaceTsdk": true
+}

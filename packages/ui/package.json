@@ -1,0 +1,58 @@
+{
+	"name": "@workspace/ui",
+	"version": "0.0.1",
+	"main": "./dist/index.js",
+	"type": "module",
+	"types": "./dist/index.d.ts",
+	"module": "./dist/index.js",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./components": {
+			"types": "./dist/components/index.d.ts",
+			"import": "./dist/components/index.js",
+			"require": "./dist/components/index.js",
+			"default": "./dist/components/index.js"
+		},
+		"./icons": {
+			"types": "./dist/icons/index.d.ts",
+			"import": "./dist/icons/index.js",
+			"require": "./dist/icons/index.js",
+			"default": "./dist/icons/index.js"
+		},
+		"./theme": {
+			"types": "./dist/theme/index.d.ts",
+			"import": "./dist/theme/index.js",
+			"require": "./dist/theme/index.js",
+			"default": "./dist/theme/index.js"
+		}
+	},
+	"scripts": {
+		"build": "tsdown --config tsdown.config.ts --dts --sourcemap --platform neutral",
+		"check-types": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@tamagui/animations-css": "^1.126.1",
+		"@tamagui/animations-moti": "^1.126.1",
+		"@tamagui/config": "^1.126.1",
+		"@tamagui/helpers-icon": "^1.126.1",
+		"@tamagui/lucide-icons": "^1.126.1",
+		"@tamagui/use-direction": "^1.126.1",
+		"moti": "^0.30.0"
+	},
+	"peerDependencies": {
+		"react": "18.3.1",
+		"react-native": "0.76.9",
+		"react-native-reanimated": "~3.16.1",
+		"react-native-svg": "15.8.0",
+		"tamagui": "^1.126.1"
+	},
+	"devDependencies": {
+		"@workspace/tsconfig": "workspace:*",
+		"tsdown": "^0.12.7"
+	}
+}

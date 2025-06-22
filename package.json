@@ -1,0 +1,48 @@
+{
+	"name": "workspace",
+	"version": "0.0.0",
+	"repository": "https://github.com/guillempuche/live-editor",
+	"packageManager": "yarn@4.9.2",
+	"engines": {
+		"node": ">=22",
+		"yarn": ">=4"
+	},
+	"type": "module",
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"scripts": {
+		"______ Development ______": "Run applications in development mode",
+		"server": "yarn turbo run @workspace/apps-server#start",
+		"web": "yarn workspace @workspace/apps-expo web",
+		"______ Build ______": "Build and run the monorepo",
+		"build": "DO_NOT_TRACK=1 TURBO_TELEMETRY_DISABLED=1 turbo run build --verbosity=2",
+		"______ Setup ______": "Project initialization",
+		"prepare": "lefthook install",
+		"setup": "tsx scripts/setup.ts development",
+		"generate-paths": "yarn workspace @workspace/tsconfig generate-paths",
+		"______ Cleanup ______": "Clean project files and dependencies",
+		"clean-nodemodules": "rm -rf node_modules && rm -rf ./apps/*/node_modules && rm -rf ./packages/**/node_modules && yarn cache clean && rm -rf yarn.lock",
+		"______ Check ______": "Validate code and dependencies",
+		"check-deps": "syncpack list",
+		"check-secrets": "secretlint '**/*'",
+		"check-types": "turbo run check-types --affected",
+		"______ Lint ______": "Code quality tools",
+		"lint": "yarn lint-biome && yarn lint-syncpack",
+		"lint-biome": "biome check --write --no-errors-on-unmatched",
+		"lint-syncpack": "syncpack format"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.0.4",
+		"@secretlint/secretlint-rule-no-dotenv": "^9.3.2",
+		"@secretlint/secretlint-rule-preset-recommend": "^9.2.0",
+		"@types/node": "^22.10.10",
+		"lefthook": "^1.11.12",
+		"react": "18.3.1",
+		"secretlint": "^9.2.0",
+		"syncpack": "^13.0.2",
+		"turbo": "^2.5.2",
+		"typescript": "5.7.2"
+	}
+}
