@@ -1,0 +1,20 @@
+{
+	"extends": "@workspace/tsconfig/base.json",
+	"compilerOptions": {
+		"jsx": "react-native",
+		"baseUrl": ".",
+		"paths": {
+			"~components": ["./src/components/index.ts"],
+			"~hooks": ["./src/hooks/index.ts"]
+		}
+	},
+	"include": ["src", ".expo/types/**/*.ts", "expo-env.d.ts", "types.d.ts"],
+	"references": [
+		{
+			"path": "../../packages/ui"
+		},
+		{
+			"path": "../../packages/logging"
+		}
+	]
+}
