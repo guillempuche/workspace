@@ -12,12 +12,6 @@
 			"require": "./dist/index.js",
 			"default": "./dist/index.js"
 		},
-		"./components": {
-			"types": "./dist/components/index.d.ts",
-			"import": "./dist/components/index.js",
-			"require": "./dist/components/index.js",
-			"default": "./dist/components/index.js"
-		},
 		"./icons": {
 			"types": "./dist/icons/index.d.ts",
 			"import": "./dist/icons/index.js",

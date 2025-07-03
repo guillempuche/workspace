@@ -6,10 +6,6 @@ export default defineConfig([
 		outDir: 'dist',
 	},
 	{
-		entry: ['src/components/index.ts'],
-		outDir: 'dist/components',
-	},
-	{
 		entry: ['src/icons/index.ts'],
 		outDir: 'dist/icons',
 	},
