@@ -34,8 +34,6 @@ export const media = {
 	gtXxl: { minWidth: breakpoints.xxl + 1 },
 	xxxl: { maxWidth: breakpoints.xxxl },
 	gtXxxl: { minWidth: breakpoints.xxxl + 1 },
-	// short: { maxHeight: heightBreakpoints.short },
-	// midHeight: { maxHeight: heightBreakpoints.midHeight },
 	hoverNone: { hover: 'none' },
 	pointerCoarse: { pointer: 'coarse' },
 } as const

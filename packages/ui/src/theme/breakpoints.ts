@@ -12,8 +12,3 @@ export const breakpoints = {
 	xxl: 1280,
 	xxxl: 1536,
 } as const
-
-export const heightBreakpoints = {
-	short: 736,
-	midHeight: 800,
-} as const

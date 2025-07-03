@@ -22,7 +22,6 @@ export default {
 			label: 'React',
 			dependencies: ['@types/react*', 'react', 'react-dom', 'react-native'],
 			policy: 'sameRange',
-			// isIgnored: true,
 		},
 		{
 			label: 'Tamagui',

@@ -72,8 +72,3 @@ export const tamaguiConfig = createTamagui({
 
 // For Babel in Expo app
 export default tamaguiConfig
-
-// export type CustomTamaguiConfigType = typeof tamaguiConfig
-// declare module 'tamagui' {
-// 	interface TamaguiCustomConfig extends CustomTamaguiConfigType {}
-// }
