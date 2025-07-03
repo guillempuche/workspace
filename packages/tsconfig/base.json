@@ -35,7 +35,11 @@
 		"skipDefaultLibCheck": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
-		"paths": {}
+		"paths": {
+			"@workspace/logging": ["../logging/src"],
+			"@workspace/ui": ["../ui/src"],
+			"@workspace/ui/*": ["../ui/src/*"]
+		}
 	},
 	"exclude": ["node_modules", "dist"],
 	"types": ["node"]

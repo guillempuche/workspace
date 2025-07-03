@@ -6,7 +6,7 @@ main()
 
 function main() {
 	const thisFileDir = path.dirname(fileURLToPath(import.meta.url))
-	const monorepoRoot = path.resolve(thisFileDir, '../../..')
+	const monorepoRoot = path.resolve(thisFileDir, '../..')
 	const packagesDir = path.join(monorepoRoot, 'packages')
 
 	const pkgToSrcPaths = scanAllPackages(packagesDir, thisFileDir)
