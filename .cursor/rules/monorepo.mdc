@@ -3,4 +3,53 @@ description:
 globs: 
 alwaysApply: true
 ---
-À la Google Drive.
+## Guiding Principle
+
+Structure the repository for easy discovery—think *Google Drive** folders and an AI and collaborative text editor.
+
+## Tech Stack
+
+* **TypeScript v5.7** – ESM‑only; `tsconfig.json` must set `"moduleResolution": "bundler"`. Root tsconfig at @workspace/tsconfig `packages/tsconfig/base.json`
+* **Yarn v4** – use the **node‑modules** linker.
+* **React** for UI.
+* **Expo v53** – single codebase for **web *and* native** with Expo Router v4
+* **Tamagui ≥ v1.126** – shared design system for all platforms.
+* Adhere to **Material Design 3** guidelines throughout the UI.
+
+## Workspace Packages
+
+* **Tamagui**: import components with `'tamagui'`
+
+### Core
+
+* `@workspace/logging` – cross‑platform logging helpers.
+
+### UI Library `@workspace/ui/*`
+
+* **Icons**: `packages/ui/src/icons/index.ts`
+
+**Design‑token maps**
+
+| Token                 | Path                                    |
+| --------------------- | --------------------------------------- |
+| Colors                | `packages/ui/src/theme/colors.ts`       |
+| Typography            | `packages/ui/src/theme/fonts.ts`        |
+| Spacing               | `packages/ui/src/theme/spacing.ts`      |
+| Border Radii          | `packages/ui/src/theme/border_radii.ts` |
+| Z‑indices             | `packages/ui/src/theme/z_indices.ts`    |
+| Breakpoints (Tamagui) | `packages/ui/src/theme/breakpoints.ts`  |
+| Animations (Tamagui)  | `packages/ui/src/theme/animations.ts`   |
+| Icon Sizes            | `packages/ui/src/theme/icon_sizes.ts`   |
+
+## Application Layout (Expo)
+
+* **Hooks**: `apps/expo/src/hooks/index.ts` (`import {} from '~hooks'`)
+* **Components**: `apps/expo/src/components/index.ts` (`import {} from '~components'`)
+* **Routes**: files under `apps/expo/src/app`
+
+## Coding Standards
+
+1. Keep the code self‑documenting; add clear comments where intent is not obvious.
+2. Follow **WCAG 2.2 AA** accessibility best practices (roles, labels, contrast, keyboard navigation).
+
+## Instructions
