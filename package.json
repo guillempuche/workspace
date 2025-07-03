@@ -34,7 +34,7 @@
 		"lint-syncpack": "syncpack format"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.0.4",
+		"@biomejs/biome": "^2.0.6",
 		"@secretlint/secretlint-rule-no-dotenv": "^9.3.2",
 		"@secretlint/secretlint-rule-preset-recommend": "^9.2.0",
 		"@types/node": "^22.10.10",
