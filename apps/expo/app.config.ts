@@ -7,8 +7,8 @@ type BuildType = 'development' | 'production'
 type ExpoPlugins = ExpoConfig['plugins']
 
 const appIconsIos = {
-	development: './assets/icon.png',
-	production: './assets/icon.png',
+	development: './src/assets/icon.png',
+	production: './src/assets/icon.png',
 } as const satisfies Record<BuildType, string>
 
 const appIconsAndroid = {
@@ -55,7 +55,7 @@ const getPlugins = (domains: string[]): NonNullable<ExpoPlugins> => {
 			'expo-splash-screen',
 			{
 				backgroundColor: '#ffffff',
-				image: './assets/splash-icon.png',
+				image: './src/assets/splash-icon.png',
 				resizeMode: 'contain',
 			},
 		],
@@ -101,8 +101,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 	const domains = deepLinkingDomains[buildType]
 	const projectId = projectIds[buildType]
 
-	console.log(`Building app for "${buildType}" environment`)
-
 	return {
 		name: appName,
 		slug: 'pacte',
@@ -111,7 +109,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 		icon: appIconIos,
 		userInterfaceStyle: 'automatic', // Required by Tamagui for dark mode
 		splash: {
-			image: './assets/splash-icon.png',
+			image: './src/assets/splash-icon.png',
 			resizeMode: 'contain',
 			backgroundColor: '#ffffff',
 		},
@@ -123,7 +121,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 		},
 		android: {
 			adaptiveIcon: {
-				foregroundImage: './assets/adaptive-icon.png',
+				foregroundImage: './src/assets/adaptive-icon.png',
 				...appIconAndroid,
 			},
 			package: bundleIdentifier,
@@ -148,8 +146,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 		},
 		web: {
 			bundler: 'metro',
-			favicon: './public/favicon.ico',
-			output: 'static',
+			favicon: './src/assets/favicon-32x32.png',
+			output: 'single',
 		},
 		plugins: getPlugins(domains),
 		experiments: {
