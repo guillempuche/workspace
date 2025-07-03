@@ -21,8 +21,6 @@ const config = getDefaultConfig(projectRoot, {
 
 const monorepoPackages = getMonorepoPackages(projectRoot)
 
-console.log('Registered monorepo packages:', Object.keys(monorepoPackages))
-
 const monorepoConfig = {
 	...config,
 	projectRoot,
@@ -33,7 +31,7 @@ const monorepoConfig = {
 	resolver: {
 		extraNodeModules: {
 			...monorepoPackages,
-			assets: path.resolve(projectRoot, 'assets'),
+			assets: path.resolve(projectRoot, 'src/assets'),
 		},
 		unstable_enablePackageExports: false, // Prevent Tamagui error for the native app. More at https://github.com/tamagui/tamagui/issues/3396#issuecomment-2828685283
 		sourceExts: [
@@ -47,6 +45,27 @@ const monorepoConfig = {
 			path.resolve(projectRoot, 'node_modules'),
 			path.resolve(monorepoRoot, 'node_modules'),
 		],
+		// // Custom resolver to handle subpath exports manually
+		// resolveRequest: (context, moduleName, platform) => {
+		// 	// Handle @platejs/*/react imports
+		// 	const platejsReactMatch = moduleName.match(/^(@platejs\/[^/]+)\/react$/)
+		// 	if (platejsReactMatch) {
+		// 		const packageName = platejsReactMatch[1]
+		// 		const platejsPath = path.resolve(
+		// 			projectRoot,
+		// 			`node_modules/${packageName}/dist/react/index.js`,
+		// 		)
+		// 		if (require('node:fs').existsSync(platejsPath)) {
+		// 			return {
+		// 				filePath: platejsPath,
+		// 				type: 'sourceFile',
+		// 			}
+		// 		}
+		// 	}
+
+		// 	// Default resolver
+		// 	return context.resolveRequest(context, moduleName, platform)
+		// },
 	},
 }
 

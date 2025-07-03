@@ -30,10 +30,12 @@ import type React from 'react'
 import FlashMessage from 'react-native-flash-message'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { TamaguiProvider } from 'tamagui'
-import '../tamagui_web.css'
 
 import { CoAnimatedSplashScreen } from '~components'
 import { LixProvider, ThemeProvider, useTheme } from '~hooks'
+
+import '../global.css'
+import '../tamagui_web.css'
 
 export { ErrorBoundary } from 'expo-router'
 
@@ -82,7 +84,7 @@ export default function RootLayout() {
 	return (
 		<CoAnimatedSplashScreen
 			loading={!loaded}
-			image={require('../../assets/splash-icon.png')}
+			image={require('../assets/splash-icon.png')}
 		>
 			{content}
 		</CoAnimatedSplashScreen>

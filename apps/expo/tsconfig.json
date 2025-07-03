@@ -4,8 +4,13 @@
 		"jsx": "react-native",
 		"baseUrl": ".",
 		"paths": {
-			"~components": ["./src/components/index.ts"],
-			"~hooks": ["./src/hooks/index.ts"]
+			"~components": ["./src/components"],
+			"~components/*": ["./src/components/*"],
+			"~components/web": ["./src/components/web"],
+			"~hooks": ["./src/hooks/index.ts"],
+			"~lib": ["./src/lib"],
+			"~lib/*": ["./src/lib/*"],
+			"~utils": ["./src/lib/utils.ts"]
 		}
 	},
 	"include": ["src", ".expo/types/**/*.ts", "expo-env.d.ts", "types.d.ts"],

@@ -1,40 +1,44 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
 	Adapt,
+	type AdaptWhen,
 	Button,
 	Dialog,
 	Input,
-	Label,
 	Sheet,
-	Switch,
-	XStack,
 	YStack,
 } from 'tamagui'
 
-export const CoCreateModal = ({
+import type { FileSystemItem } from '~hooks'
+
+export const CoRenameModal = ({
 	visible,
+	itemToRename,
 	onClose,
-	onCreate,
+	onRename,
 }: {
 	visible: boolean
+	itemToRename: FileSystemItem | null
 	onClose: () => void
-	onCreate: (name: string, type: 'file' | 'folder') => void
+	onRename: (item: FileSystemItem, newName: string) => void
 }) => {
-	const [name, setName] = useState('')
-	const [isFolder, setIsFolder] = useState(false)
+	const [newName, setNewName] = useState('')
 
-	const handleCreate = () => {
-		if (name.trim()) {
-			onCreate(name.trim(), isFolder ? 'folder' : 'file')
-			setName('')
-			setIsFolder(false)
+	useEffect(() => {
+		if (itemToRename) {
+			setNewName(itemToRename.name)
+		}
+	}, [itemToRename])
+
+	const handleRename = () => {
+		if (newName.trim() && itemToRename) {
+			onRename(itemToRename, newName.trim())
 			onClose()
 		}
 	}
 
 	const handleCancel = () => {
-		setName('')
-		setIsFolder(false)
+		setNewName('')
 		onClose()
 	}
 
@@ -64,34 +68,20 @@ export const CoCreateModal = ({
 					width='90%'
 					maxWidth={400}
 				>
-					<Dialog.Title size='$heading-m'>Create New</Dialog.Title>
+					<Dialog.Title size='$heading-m'>
+						Rename {itemToRename?.type}
+					</Dialog.Title>
 
 					<YStack gap='$gapMd'>
 						<Input
 							size='$body-l'
-							placeholder='Enter name...'
-							value={name}
-							onChangeText={setName}
+							value={newName}
+							onChangeText={setNewName}
 							autoFocus
+							selectTextOnFocus
 							borderRadius='$roundedSm'
+							placeholder='Enter new name...'
 						/>
-
-						<XStack alignItems='center' gap='$gapSm'>
-							<Label size='$body-m' htmlFor='type-switch'>
-								File
-							</Label>
-							<Switch
-								id='type-switch'
-								size='$spacingXl'
-								checked={isFolder}
-								onCheckedChange={setIsFolder}
-							>
-								<Switch.Thumb animation='fast' />
-							</Switch>
-							<Label size='$body-m' htmlFor='type-switch'>
-								Folder
-							</Label>
-						</XStack>
 					</YStack>
 
 					<YStack gap='$gapSm' marginTop='$spacingMd'>
@@ -99,11 +89,11 @@ export const CoCreateModal = ({
 							size='$spacingXl'
 							backgroundColor='$primary'
 							color='$onPrimary'
-							onPress={handleCreate}
-							disabled={!name.trim()}
+							onPress={handleRename}
+							disabled={!newName.trim()}
 							borderRadius='$roundedSm'
 						>
-							Create
+							Rename
 						</Button>
 						<Button
 							size='$spacingXl'
@@ -118,14 +108,14 @@ export const CoCreateModal = ({
 				</Dialog.Content>
 			</Dialog.Portal>
 
-			<Adapt when='sm' platform='native'>
+			<Adapt when={'sm' as unknown as AdaptWhen} platform='native'>
 				<Sheet
 					animation='medium'
 					zIndex={200000}
 					modal
 					dismissOnSnapToBottom
 					open={visible}
-					onOpenChange={open => !open && onClose()}
+					onOpenChange={(open: boolean) => !open && onClose()}
 				>
 					<Sheet.Frame padding='$spacingLg' gap='$gapMd'>
 						<Adapt.Contents />
