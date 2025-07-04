@@ -34,7 +34,7 @@ import { TamaguiProvider } from 'tamagui'
 import { CoAnimatedSplashScreen } from '~components'
 import { LixProvider, ThemeProvider, useTheme } from '~hooks'
 
-import '../global.css'
+import '../globals.css'
 import '../tamagui_web.css'
 
 export { ErrorBoundary } from 'expo-router'
