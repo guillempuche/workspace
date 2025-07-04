@@ -13,7 +13,6 @@ const projectRoot = __dirname
 const monorepoRoot = path.resolve(projectRoot, '../..')
 
 // Initialize Metro config with Expo's default
-// const config = getDefaultConfig(projectRoot)
 const config = getDefaultConfig(projectRoot, {
 	// [Web-only]: Enables CSS support in Metro.
 	isCSSEnabled: true,
@@ -24,16 +23,13 @@ const monorepoPackages = getMonorepoPackages(projectRoot)
 const monorepoConfig = {
 	...config,
 	projectRoot,
-	watchFolders: [
-		// srcPath,
-		...Object.values(monorepoPackages),
-	],
+	watchFolders: [...Object.values(monorepoPackages)],
 	resolver: {
 		extraNodeModules: {
 			...monorepoPackages,
 			assets: path.resolve(projectRoot, 'src/assets'),
 		},
-		unstable_enablePackageExports: false, // Prevent Tamagui error for the native app. More at https://github.com/tamagui/tamagui/issues/3396#issuecomment-2828685283
+		unstable_enablePackageExports: true,
 		sourceExts: [
 			...config.resolver.sourceExts,
 			// Expo 49 issue: default metro config needs to include "mjs"

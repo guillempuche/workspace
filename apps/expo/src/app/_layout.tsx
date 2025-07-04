@@ -32,7 +32,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { TamaguiProvider } from 'tamagui'
 
 import { CoAnimatedSplashScreen } from '~components'
-import { LixProvider, ThemeProvider, useTheme } from '~hooks'
+import { ThemeProvider, useTheme } from '~hooks'
 
 import '../globals.css'
 import '../tamagui_web.css'
@@ -59,12 +59,6 @@ export default function RootLayout() {
 	})
 	useLogger(navigationRef)
 
-	if (typeof process.env.EXPO_PUBLIC_AUTH_CLERK_PUBLISHABLE_KEY !== 'string') {
-		throw new Error(
-			'Missing EXPO_PUBLIC_AUTH_CLERK_PUBLISHABLE_KEY in app.config.ts',
-		)
-	}
-
 	if (!loaded) {
 		logAppExpo.debug('Loading fonts...')
 	}
@@ -73,9 +67,8 @@ export default function RootLayout() {
 		<SafeAreaProvider>
 			<ThemeProvider defaultTheme='system'>
 				<ThemeAwareContent>
-					<LixProvider>
-						<Slot />
-					</LixProvider>
+					{/* <LixProvider> */}
+					<Slot />
 				</ThemeAwareContent>
 			</ThemeProvider>
 		</SafeAreaProvider>
